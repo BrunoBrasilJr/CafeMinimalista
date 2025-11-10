@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Café Minimalista — Home</title>
+  <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="page-loader" class="page-loader show">
+  <div style="display:flex;align-items:center">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+</div>
+
+<header class="header-wrap">
+  <div class="container header-inner">
+    <div class="brand">Café Minimalista</div>
+
+    <div class="nav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="localização.html">Localização</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+      <div class="vertical-divider" aria-hidden="true"></div>
+
+      <div class="switch-container">
+        <span class="switch-text">Tema:</span>
+        <div id="switch-tema" class="switch-btn" role="button" aria-label="Alternar tema"></div>
+      </div>
+
+      <button id="hambtn" class="hamburger" aria-label="Abrir menu">
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="index.html">Home</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="localização.html">Localização</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+
+    <div style="height:1px;background:var(--nav-border);margin:8px 0"></div>
+
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="switch-text">Tema:</span>
+      <div id="mobile-switch" class="switch-btn" role="button" aria-label="Alternar tema"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <div>
+      <h2>Café. Simples. Elegante.</h2>
+      <p>Um espaço pensado para quem busca tranquilidade, aroma e experiências únicas.</p>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>Por que nos escolher</h2>
+    <p style="color:var(--muted)">Grãos selecionados, moagem artesanal e preparo cuidadoso. Um lugar para desacelerar e apreciar o simples.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 Café Minimalista — Rua Exemplo, 123 — Centro — (11) 99999-0000
+  </div>
+</footer>
+
+<script>
+  const loader = document.getElementById('page-loader');
+  window.addEventListener('load', () => setTimeout(()=> loader.classList.remove('show'), 550));
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href) return;
+    if(href.endsWith('.html')){
+      e.preventDefault();
+      loader.classList.add('show');
+      setTimeout(()=> { window.location.href = href; }, 420);
+    }
+  });
+
+  const applySavedOrAutoTheme = () => {
+    const saved = localStorage.getItem('tema');
+    if(saved){
+      document.body.classList.toggle('dark', saved === 'dark');
+    } else {
+      const hour = new Date().getHours();
+      document.body.classList.toggle('dark', (hour >= 18) || (hour < 6));
+    }
+  };
+  applySavedOrAutoTheme();
+
+  const switchBtn = document.getElementById('switch-tema');
+  const mobileSwitch = document.getElementById('mobile-switch');
+  function toggleThemeAndSave(){
+    document.body.classList.toggle('dark');
+    localStorage.setItem('tema', document.body.classList.contains('dark') ? 'dark' : 'light');
+  }
+  if(switchBtn) switchBtn.addEventListener('click', toggleThemeAndSave);
+  if(mobileSwitch) mobileSwitch.addEventListener('click', toggleThemeAndSave);
+
+  const hambtn = document.getElementById('hambtn');
+  const drawer = document.getElementById('mobile-drawer');
+  if(hambtn && drawer){
+    hambtn.addEventListener('click', ()=> drawer.classList.toggle('show'));
+    drawer.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> drawer.classList.remove('show')));
+  }
+</script>
+
+</body>
+</html>

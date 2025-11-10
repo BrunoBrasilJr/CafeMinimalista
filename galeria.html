@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galeria — Café Minimalista</title>
+  <link rel="stylesheet" href="css/estilo.css" />
+
+  <style>
+    /* ✅ Overlays da galeria */
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.10);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s ease;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      text-align: center;
+      padding: 14px;
+    }
+
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div id="page-loader" class="page-loader"></div>
+
+<header class="header-wrap">
+  <div class="container header-inner">
+    <div class="brand">Café Minimalista</div>
+    <div class="nav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="localização.html">Localização</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+      <div class="vertical-divider"></div>
+
+      <div class="switch-container">
+        <span class="switch-text">Tema:</span>
+        <div id="switch-tema" class="switch-btn" role="button"></div>
+      </div>
+
+      <button id="hambtn" class="hamburger" aria-label="Abrir menu"><span class="bar"></span></button>
+    </div>
+  </div>
+
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="index.html">Home</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="localização.html">Localização</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+    <div style="height:1px;background:var(--nav-border);margin:8px 0"></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="switch-text">Tema:</span>
+      <div id="mobile-switch" class="switch-btn" role="button"></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <h2>Galeria</h2>
+
+    <div class="gallery-grid" style="grid-template-columns: repeat(3, 1fr); gap: 18px;">
+
+      <!-- 1 -->
+      <div class="gallery-card">
+        <img src="https://cdn0.tudoreceitas.com/pt/posts/0/2/9/salgado_diplomata_o_salgado_de_padaria_original_10920_orig.jpg" alt="">
+        <div class="gallery-overlay">Pão Recheado</div>
+      </div>
+
+      <!-- 2 -->
+      <div class="gallery-card">
+        <img src="https://www.guiadasemana.com.br/contentFiles/image/opt_w1280h960/2020/01/FEA/64792_shutterstock-1103348144.jpg" alt="">
+        <div class="gallery-overlay">Tarteletes de Morango</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="gallery-card">
+        <img src="https://viagem.cnnbrasil.com.br/wp-content/uploads/sites/5/2022/02/St.-Chico_Vitrine-Almoco-04_Wellington-Nemeth-2.jpg?w=1200&h=1200&crop=1" alt="">
+        <div class="gallery-overlay">Vitrine de Salgados e Doces</div>
+      </div>
+
+      <!-- 4 -->
+      <div class="gallery-card">
+        <img src="https://blog.zanottirefrigeracao.com.br/wp-content/uploads/2018/04/pao-padaria.jpg" alt="">
+        <div class="gallery-overlay">Pãezinhos</div>
+      </div>
+
+      <!-- 5 -->
+      <div class="gallery-card">
+        <img src="https://png.pngtree.com/thumb_back/fh260/background/20210903/pngtree-waffles-gourmet-bakery-dessert-food-photography-map-with-map-image_796548.jpg" alt="">
+        <div class="gallery-overlay">Waffles</div>
+      </div>
+
+      <!-- 6 -->
+      <div class="gallery-card">
+        <img src="https://www.seara.com.br/wp-content/uploads/2025/09/croque650.jpg" alt="">
+        <div class="gallery-overlay">Croque Monsieur</div>
+      </div>
+
+      <!-- 7 -->
+      <div class="gallery-card">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUsqVv8jvqw1GBqVmZNfWeVa41_6kyuu5PgN31W-tBeBJc1fCURVFM-kjhzHuU9H8bP0j6GXQWgxtYR5ifWQr9qKFHQieAC0Bg9x963v63Gi3hFYdYBzZGXAxBCIpYowMtIS3nAhXLHZEgESQo_J7ZUFYgRYhs7Rb_S_ygejq6YtOJlRJ7_Q9BHU5S6WUZ/s600/Aprenda-como-fazer-o-famoso-Sonho-de-padaria-Foto-Sonho-Isabela.jpg"
+             alt="">
+        <div class="gallery-overlay">Sonhos</div>
+      </div>
+
+      <!-- 8 -->
+      <div class="gallery-card">
+        <img src="https://www.comidaereceitas.com.br/wp-content/uploads/2013/10/Pudim-de-padaria-de-liquidificador-freepik-780x617.jpg" alt="">
+        <div class="gallery-overlay">Pudim de Leite Condensado</div>
+      </div>
+
+      <!-- 9 -->
+      <div class="gallery-card">
+        <img src="https://www.comidaereceitas.com.br/wp-content/uploads/2010/05/Rissol-de-frango1-780x520.jpg" alt="">
+        <div class="gallery-overlay">Empada de palmito</div>
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">© 2025 Café Minimalista — Rua Exemplo, 123 — (11) 99999-0000</div>
+</footer>
+
+<script>
+  const loader=document.getElementById('page-loader');
+  window.addEventListener('load',()=>setTimeout(()=>loader.classList.remove('show'),450));
+
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a');
+    if(!a)return;
+    const href=a.getAttribute('href');
+    if(href.endsWith('.html')){
+      e.preventDefault();
+      loader.classList.add('show');
+      setTimeout(()=>location.href=href,360);
+    }
+  });
+
+  const applyTheme=()=>{
+    const saved=localStorage.getItem('tema');
+    if(saved){
+      document.body.classList.toggle('dark',saved==='dark');
+    } else {
+      const h=new Date().getHours();
+      document.body.classList.toggle('dark',(h>=18)||(h<6));
+    }
+  };
+  applyTheme();
+
+  document.querySelectorAll('#switch-tema,#mobile-switch').forEach(el=>{
+    el.addEventListener('click',()=>{
+      document.body.classList.toggle('dark');
+      localStorage.setItem('tema',document.body.classList.contains('dark')?'dark':'light');
+    });
+  });
+
+  const hambtn=document.getElementById('hambtn');
+  const drawer=document.getElementById('mobile-drawer');
+  hambtn.addEventListener('click',()=>drawer.classList.toggle('show'));
+  drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('show')));
+</script>
+
+</body>
+</html>
