@@ -5,69 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Localização — Café Minimalista</title>
 <link rel="stylesheet" href="css/estilo.css" />
-
 <style>
-  .location-grid {
-    display: grid;
-    grid-template-columns: 1fr 480px;
-    gap: 28px;
-    align-items: start;
-    margin-top: 28px;
-  }
-
-  @media (max-width: 900px) {
-    .location-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .location-text p {
-    color: var(--muted);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
-
-  .map-wrap {
-    width: 100%;
-    height: 480px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .map-wrap iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  .section h2 {
-    margin-bottom: 16px;
-  }
-
-  /* Botões abaixo do texto */
-  .location-buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-  }
-
-  .location-buttons button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--primary);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .location-buttons button:hover {
-    background-color: #444;
-    transform: translateY(-2px);
-  }
+.map-wrap{
+  width:100%;
+  height:380px;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  margin-top:20px;
+}
+.loc-btns{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+}
 </style>
 </head>
 <body>
@@ -81,56 +32,48 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="galeria.html">Galeria</a>
-        <a href="localização.html">Localização</a>
+        <a href="localização.html" class="current-page">Localização</a>
         <a href="sobre.html">Sobre</a>
         <a href="contato.html">Contato</a>
       </div>
       <div class="vertical-divider"></div>
       <div class="switch-container">
         <span class="switch-text">Tema:</span>
-        <div id="switch-tema" class="switch-btn" role="button"></div>
+        <div id="switch-tema" class="switch-btn"></div>
       </div>
-      <button id="hambtn" class="hamburger" aria-label="Abrir menu"><span class="bar"></span></button>
+      <button id="hambtn" class="hamburger"><span class="bar"></span></button>
     </div>
   </div>
 
   <div id="mobile-drawer" class="mobile-drawer">
     <a href="index.html">Home</a>
     <a href="galeria.html">Galeria</a>
-    <a href="localização.html">Localização</a>
+    <a class="current-page" href="localização.html">Localização</a>
     <a href="sobre.html">Sobre</a>
     <a href="contato.html">Contato</a>
     <div style="height:1px;background:var(--nav-border);margin:8px 0"></div>
     <div style="display:flex;align-items:center;gap:10px">
       <span class="switch-text">Tema:</span>
-      <div id="mobile-switch" class="switch-btn" role="button"></div>
+      <div id="mobile-switch" class="switch-btn"></div>
     </div>
   </div>
 </header>
 
 <main class="container">
   <section class="section">
-    <h2>Localização</h2>
+    <h2>Nossa Localização</h2>
+    <p style="color:var(--muted)">Nos encontramos na melhor região para receber você com conforto e praticidade.</p>
 
-    <div class="location-grid">
-      <div class="location-text">
-        <p>Nosso café está localizado no coração da cidade, com fácil acesso e estacionamento próximo. Venha nos visitar e experimentar nossas delícias artesanais.</p>
-        <p id="address-text">Endereço: 2 R. Curitiba</p>
-        <p>Telefone: (11) 99999-0000</p>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.726461409775!2d-46.65598168447696!3d-23.580063968699335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM0JzQ4LjIiUyA0NsKwMzknMTkuNiJX!5e0!3m2!1spt-BR!2sbr!4v0000000000000"
+        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+      </iframe>
+    </div>
 
-        <div class="location-buttons">
-          <button id="copy-address">Copiar endereço</button>
-          <button id="open-maps">Abrir no Maps</button>
-        </div>
-      </div>
-
-      <div class="map-wrap">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.726461409775!2d-46.65598168447696!3d-23.580063968699335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM0JzQ4LjIiUyA0NsKwMzknMTkuNiJX!5e0!3m2!1spt-BR!2sbr!4v0000000000000" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
-      </div>
+    <div class="loc-btns">
+      <button class="btn" id="copyAddr">Copiar endereço</button>
+      <button class="btn" id="openMaps">Abrir no Maps</button>
     </div>
   </section>
 </main>
@@ -140,12 +83,12 @@
 </footer>
 
 <script>
-const loader=document.getElementById('page-loader');
-window.addEventListener('load',()=>setTimeout(()=>loader.classList.remove('show'),420));
+const loader = document.getElementById('page-loader');
+window.addEventListener('load',()=> setTimeout(()=>loader.classList.remove('show'),420));
 
 document.addEventListener('click',e=>{
   const a=e.target.closest('a');
-  if(!a) return;
+  if(!a)return;
   const href=a.getAttribute('href');
   if(href && href.endsWith('.html')){
     e.preventDefault();
@@ -154,44 +97,39 @@ document.addEventListener('click',e=>{
   }
 });
 
+// theme
 const applyTheme=()=>{
   const saved=localStorage.getItem('tema');
-  if(saved) document.body.classList.toggle('dark', saved==='dark');
-  else { const h=new Date().getHours(); document.body.classList.toggle('dark', (h>=18)||(h<6)); }
+  if(saved) document.body.classList.toggle('dark',saved==='dark');
+  else{
+    const h=new Date().getHours();
+    document.body.classList.toggle('dark',(h>=18)||(h<6));
+  }
 };
 applyTheme();
 
-document.querySelectorAll('#switch-tema,#mobile-switch').forEach(el=>{
-  if(!el) return;
-  el.addEventListener('click',()=>{
+document.querySelectorAll('#switch-tema,#mobile-switch')
+  .forEach(el=>el && el.addEventListener('click',()=>{
     document.body.classList.toggle('dark');
     localStorage.setItem('tema',document.body.classList.contains('dark')?'dark':'light');
-  });
-});
+}));
 
+// mobile drawer
 const hambtn=document.getElementById('hambtn');
 const drawer=document.getElementById('mobile-drawer');
-if(hambtn && drawer){
+if(hambtn&&drawer){
   hambtn.addEventListener('click',()=>drawer.classList.toggle('show'));
   drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('show')));
 }
 
-/* Botões Copiar e Abrir Maps */
-const copyBtn = document.getElementById('copy-address');
-const openBtn = document.getElementById('open-maps');
-const addressText = "2 R. Curitiba";
+// buttons
+document.getElementById('copyAddr').onclick = ()=>{
+  navigator.clipboard.writeText("2 R. Curitiba").then(()=> alert("Endereço copiado!"));
+};
 
-copyBtn.addEventListener('click', ()=>{
-  navigator.clipboard.writeText(addressText)
-    .then(()=> alert('Endereço copiado!'))
-    .catch(()=> alert('Erro ao copiar endereço'));
-});
-
-openBtn.addEventListener('click', ()=>{
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressText)}`;
-  window.open(mapsUrl, '_blank');
-});
+document.getElementById('openMaps').onclick = ()=>{
+  window.open("https://www.google.com/maps/search/?api=1&query=2+R.+Curitiba","_blank");
+};
 </script>
-
 </body>
 </html>
